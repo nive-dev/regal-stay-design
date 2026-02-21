@@ -5,18 +5,10 @@ const BookingSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const [focused, setFocused] = useState<string | null>(null);
-  const [ripple, setRipple] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setRipple(true);
-    setTimeout(() => setRipple(false), 600);
-  };
 
   return (
-    <section id="booking" className="py-28 relative overflow-hidden bg-gradient-to-br from-primary-deep via-primary to-primary-deep">
-      <div className="absolute top-10 right-10 w-40 h-40 border border-primary-foreground/5 rounded-full animate-float" />
-      <div className="absolute bottom-10 left-10 w-24 h-24 bg-gold/5 rounded-full blur-[60px]" />
+    <section id="booking" className="py-32 bg-card relative">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[2px] bg-primary/40" />
 
       <div className="container mx-auto px-6 lg:px-12" ref={ref}>
         <motion.div
@@ -25,23 +17,20 @@ const BookingSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <p className="font-body text-sm uppercase tracking-[0.3em] text-gold mb-4">
+          <p className="font-body text-sm uppercase tracking-[0.3em] text-primary mb-4">
             Reserve
           </p>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold text-primary-foreground">
-            Book Your <span className="italic text-gold">Stay</span>
+          <h2 className="font-heading text-4xl md:text-5xl font-bold text-primary-deep">
+            Book Your <span className="italic text-primary">Stay</span>
           </h2>
-          <p className="font-body text-primary-foreground/70 mt-4">
-            Book Your Stay at RK Residency Today
-          </p>
         </motion.div>
 
         <motion.form
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-2xl mx-auto glass rounded-xl p-8 md:p-12"
-          onSubmit={handleSubmit}
+          className="max-w-2xl mx-auto bg-card rounded-xl p-8 md:p-12 shadow-lg border border-border/50"
+          onSubmit={(e) => e.preventDefault()}
         >
           <div className="grid md:grid-cols-2 gap-6 mb-6">
             {[
@@ -49,19 +38,17 @@ const BookingSection = () => {
               { name: "phone", label: "Phone Number", type: "tel" },
               { name: "checkin", label: "Check-In Date", type: "date" },
               { name: "checkout", label: "Check-Out Date", type: "date" },
-              { name: "roomtype", label: "Room Type", type: "text" },
-              { name: "guests", label: "Number of Guests", type: "number" },
             ].map((field) => (
               <div key={field.name} className="relative">
-                <label className="block font-body text-sm text-primary-foreground/80 mb-2 font-medium">
+                <label className="block font-body text-sm text-muted-foreground mb-2 font-medium">
                   {field.label}
                 </label>
                 <input
                   type={field.type}
-                  className={`w-full bg-primary-foreground/10 border-2 rounded-lg px-4 py-3 font-body text-primary-foreground placeholder:text-primary-foreground/40 outline-none transition-all duration-300 ${
+                  className={`w-full bg-secondary/50 border-2 rounded-lg px-4 py-3 font-body text-foreground placeholder:text-muted-foreground/50 outline-none transition-all duration-300 ${
                     focused === field.name
-                      ? "border-gold shadow-[0_0_20px_hsl(43_65%_52%/0.2)]"
-                      : "border-primary-foreground/20"
+                      ? "border-primary shadow-[0_0_20px_hsl(270_50%_36%/0.15)]"
+                      : "border-border/50"
                   }`}
                   onFocus={() => setFocused(field.name)}
                   onBlur={() => setFocused(null)}
@@ -71,15 +58,15 @@ const BookingSection = () => {
             ))}
           </div>
           <div className="mb-8">
-            <label className="block font-body text-sm text-primary-foreground/80 mb-2 font-medium">
+            <label className="block font-body text-sm text-muted-foreground mb-2 font-medium">
               Special Requests
             </label>
             <textarea
               rows={3}
-              className={`w-full bg-primary-foreground/10 border-2 rounded-lg px-4 py-3 font-body text-primary-foreground placeholder:text-primary-foreground/40 outline-none transition-all duration-300 resize-none ${
+              className={`w-full bg-secondary/50 border-2 rounded-lg px-4 py-3 font-body text-foreground placeholder:text-muted-foreground/50 outline-none transition-all duration-300 resize-none ${
                 focused === "message"
-                  ? "border-gold shadow-[0_0_20px_hsl(43_65%_52%/0.2)]"
-                  : "border-primary-foreground/20"
+                  ? "border-primary shadow-[0_0_20px_hsl(270_50%_36%/0.15)]"
+                  : "border-border/50"
               }`}
               onFocus={() => setFocused("message")}
               onBlur={() => setFocused(null)}
@@ -88,9 +75,7 @@ const BookingSection = () => {
           </div>
           <button
             type="submit"
-            className={`w-full bg-gold text-gold-foreground py-4 rounded-lg font-body font-semibold text-base tracking-wide animate-pulse-glow hover:scale-[1.02] transition-transform duration-300 relative overflow-hidden ${
-              ripple ? "after:absolute after:inset-0 after:bg-primary-foreground/20 after:animate-fade-in after:rounded-lg" : ""
-            }`}
+            className="w-full bg-primary text-primary-foreground py-4 rounded-lg font-body font-semibold text-base tracking-wide animate-pulse-glow hover:scale-[1.02] transition-transform duration-300"
           >
             Confirm Reservation
           </button>
