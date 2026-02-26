@@ -4,7 +4,7 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 import room1 from "@/assets/room-1.jpg";
 import room2 from "@/assets/room-2.jpg";
-import room3 from "@/assets/room-3.jpg";
+// import room3 from "@/assets/room-3.jpg";
 import room4 from "@/assets/room-4.jpg";
 import room5 from "@/assets/room-5.jpg";
 import room6 from "@/assets/room-6.jpg";
@@ -14,7 +14,7 @@ import room8 from "@/assets/room-8.jpg";
 const rooms = [
   { src: room1, alt: "Deluxe Room - Queen bed with floral bedding" },
   { src: room2, alt: "Deluxe Room - Spacious queen bed with wooden frame" },
-  { src: room3, alt: "Deluxe Room - AC equipped room with queen bed" },
+  // { src: room3, alt: "Deluxe Room - AC equipped room with queen bed" },
   { src: room4, alt: "Deluxe Room - Bright room with window view" },
   { src: room5, alt: "Deluxe Room - Cozy turquoise room with shelving" },
   { src: room6, alt: "Deluxe Room - Green room with natural light" },
@@ -34,7 +34,7 @@ const GallerySection = () => {
 
   return (
     <>
-      <section id="gallery" className="py-32 relative bg-grain">
+      <section id="gallery" className="py-32 relative bg-white">
         <div className="container mx-auto px-6 lg:px-12" ref={ref}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}

@@ -40,15 +40,15 @@ const Footer = () => {
             <div className="space-y-4">
               <a href="tel:+910000000000" className="flex items-center gap-3 font-body text-primary-deep-foreground/60 hover:text-primary-deep-foreground transition-colors">
                 <Phone className="w-4 h-4" />
-                +91 000 000 0000
+                +91 94426 72429
               </a>
               <a href="mailto:info@rkresidency.com" className="flex items-center gap-3 font-body text-primary-deep-foreground/60 hover:text-primary-deep-foreground transition-colors">
                 <Mail className="w-4 h-4" />
-                info@rkresidency.com
+                rkresidency026@gmail.com
               </a>
               <div className="flex items-start gap-3 font-body text-primary-deep-foreground/60">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-                RK Residency, Main Road
+               no.9,kannan nagar,1544,vellore main road,near anna arch,vengikkkal,ttiruvannamalai-606604
               </div>
             </div>
           </div>
