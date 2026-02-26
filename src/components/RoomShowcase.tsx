@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import roomImage from "@/assets/room-showcase.jpg";
+import roomImage from "@/assets/room-2.jpg";
 
 const RoomShowcase = () => {
   const ref = useRef(null);
